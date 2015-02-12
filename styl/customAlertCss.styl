@@ -1,0 +1,30 @@
+/*
+* CSS
+*/
+
+@require "customAlertFunctions"
+
+#customAlert-overlay
+  baseOverlay(backgroundOverlay)
+
+#customConfirm-overlay
+  baseOverlay(backgroundConfirmOverlay)
+
+#customAlert
+  background-color background
+  button
+    buttonsColors(colorButton, backgroundButton)
+
+#customConfirm
+  background-color backgroundConfirm
+  button
+    &.confirm
+      margin-right 10px
+      buttonsColors(colorButtonTrue, backgroundButtonTrue)
+    &.cancel
+      buttonsColors(colorButtonFalse, backgroundButtonFalse)
+
+#customAlert, #customConfirm
+  baseAlert()
+  button
+    buttonStyle()
