@@ -1,75 +1,15 @@
 /**
  * customAlerts.js
- * https://github.com/PhilippeAssis/custom-alert
+ * Author: Philippe Assis
+ * Doc and repo: https://github.com/PhilippeAssis/custom-alert
+ *
  * Alert e confirm personalizados.
- * FF, Chromer, IE(>=9)
+ * FF, Chromer, IE(>=9)*
  *
- * Os códigos de estilo estão em css/customAlert.css. Caso esteja usando o
- * preprocessador de estilo Stylus, css/customAlert.styl.
- *
- **************************************************************************
- *********************************ATENÇÂO**********************************
+ *                              ATENÇÂO
  * window.customAlert e window.customConfirm devem permanecer com esses nomes,
- * a não se que vc saiba o que esta fazendo.
- *
- * Vocẽ pode adicionar configuraçãos na declaração de ambos.
- * Exemplo:
- new customConfirm({
-        execute : false,
-        title : 'Atenção!'
-    });
-
- *
- **************************************************************************
- ************************CONFIGURAÇÔES PADRÕES*****************************
- *
- *As configuraçãos padrões do customAlert() são:
- {
-     title : 'Alert!', // Texto do título do alert.
-     ok : 'OK', // Texto do botão de conclusão do alert.
- }
- *
- *As configuraçãos padrões do customConfirm() são:
- {
-    title : 'Confirm it:', // Texto do título do confirm.
-     yes : 'YES', // Texto do botão de retorno TRUE.
-     no : 'NO', // Texto do botão de retorno FALSE.
-     return : false // Caso TRUE ativa retorno boolean, caso FALSE, executa o
-                    // callback sem retornar nenhum parametro,
-                    // caso o úsuario selecione o botão TRUE e não executa nada
-                    // caso selecione o botão FALSE.
- }
- *
- **************************************************************************
- ************************CASOS DE USO (EXEMPLOS)***************************
- *
- * ***ALERT***
- alert('Isso é um exemplo',{
-                                title : 'Exemplo de uso',
-                                ok : 'Eu já sei'
-                                })
- *
- * ***CONFIRM***
- confirm(
- 'Isso é um exemplo?',
- function(data){ ,
-                console.log('Exemplo: '+data)
-                },
- {
- return : true
- title : 'Um belo exemplo não?',
- yes : 'Muito Bom',
- no : 'Não, adeus!'
- }
- )
-
- *
- * Criado por Philippe Assis
- * Qualquer dúvida ou sujestão, contate
- * assis@guaxinim.mobi
- *
+ * a não ser que você saiba o que esta fazendo.
  */
-
 var customKit = {
     createDiv: function (attr, name, parent) {
         var div = document.createElement("div");
@@ -223,4 +163,3 @@ function customConfirm(options) {
 window.customAlert = new customAlert({title: ''});
 
 window.customConfirm = new customConfirm({title: ''});
-

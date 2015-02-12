@@ -3,14 +3,16 @@ Substitue as funções alert() e confirm() do JavaScript, permitindo customiza-l
 outro framework, somente JavaScript e CSS. Funciona perfeita mente em dispositivos mobile, adaptando-se
 automaticamente ao tamanho da tela.
 
-Atualmente funciona perfeitamentem em:
+Funciona perfeitamentem em:
 FF, Chrome, IE(**>=9**)
  
-Os códigos de estilo estão em *css/customAlert.css*. Caso esteja usando o preprocessador de estilo [Stylus](learnboost.github.io/stylus), css*/customAlert.styl*.
+Os códigos de estilo estão em *css/customAlert.css*. Caso esteja usando o preprocessador de estilo [Stylus]
+(learnboost.github.io/stylus), styl*/customAlert.styl*.
  
  
 >###ATENÇÂO
->  *window.customAlert* e *window.customConfirm* devem permanecer com esses nomes, a não se que vc saiba o que esta fazendo.
+>  *window.customAlert* e *window.customConfirm* devem permanecer com esses nomes, a não se que você saiba o que esta 
+fazendo.
  
  
 ##Configurações
