@@ -1,5 +1,6 @@
 /**
  * customAlerts.js
+ * https://github.com/PhilippeAssis/custom-alert
  * Alert e confirm personalizados.
  * FF, Chromer, IE(>=9)
  *
