@@ -1,13 +1,14 @@
 #Custom Alert
-Substitue as funções alert() e confirm() do JavaScript, permitindo customiza-las. Essa aplicação não usa jQuery ou outro framework, somente JavaScript e CSS.
+Substitue as funções alert() e confirm() do JavaScript, permitindo customiza-las. Essa aplicação não usa jQuery ou
+outro framework, somente JavaScript e CSS. Funciona perfeita mente em dispositivos mobile, adaptando-se
+automaticamente ao tamanho da tela.
 
 Atualmente funciona perfeitamentem em:
 FF, Chrome, IE(**>=9**)
  
 Os códigos de estilo estão em *css/customAlert.css*. Caso esteja usando o preprocessador de estilo [Stylus](learnboost.github.io/stylus), css*/customAlert.styl*.
  
-
-
+ 
 >###ATENÇÂO
 >  *window.customAlert* e *window.customConfirm* devem permanecer com esses nomes, a não se que vc saiba o que esta fazendo.
  
@@ -50,7 +51,7 @@ As configuraçãos padrões do *customConfirm()* são:
                                 })
  
 ###Confirm simples
-	confirm('Isso é um exemplo?', function(){ console.log('Confirmado! Callback chamado!') })
+	confirm('Isso é um exemplo?', function(){ console.log('Confirmado!') })
 
 ###Confirm avançado
 	confirm(
