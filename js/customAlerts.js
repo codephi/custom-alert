@@ -224,9 +224,3 @@ window.customAlert = new customAlert({title: ''});
 
 window.customConfirm = new customConfirm({title: ''});
 
-confirm('Isso é um teste?', function (data) {
-    if (data)
-        alert('Sim!')
-    else
-        alert('Não!')
-}, {return: true})

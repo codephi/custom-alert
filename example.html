@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Example Custom Alert</title>
+    <link href="css/customAlerts.css" rel="stylesheet">
+</head>
+<body>
+<h1>Custom Alert</h1>
+
+<h2>Por: Philippe Assis</h2>
+<a href="https://github.com/PhilippeAssis/custom-alert">github.com/PhilippeAssis/custom-alert</a>
+<script src="js/customAlerts.js" language="javascript"></script>
+<script>
+    confirm('Isso é um exemplo?', function (data) {
+        if (data)
+            alert('Sim!')
+        else
+            alert('Não!')
+    }, {return: true});
+</script>
+</body>
+</html>
