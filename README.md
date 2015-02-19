@@ -7,7 +7,7 @@ Funciona perfeitamentem em:
 FF, Chrome, IE(**>=9**)
  
 Os códigos de estilo estão em *css/customAlert.css*. Caso esteja usando o preprocessador de estilo [Stylus]
-(learnboost.github.io/stylus), styl*/customAlert.styl*.
+(learnboost.github.io/stylus), css*/customAlert.styl*.
  
  
 >###ATENÇÂO
