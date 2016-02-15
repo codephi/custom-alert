@@ -65,7 +65,7 @@ function customAlert(options) {
         alertBox = document.getElementById("customAlert");
         alertBox.getElementsByClassName("header")[0].innerHTML = this.options.title;
         alertBox.getElementsByClassName("body")[0].innerHTML = dialog;
-        alertBox.getElementsByClassName("footer")[0].innerHTML = "<button onclick=\"window.customAlert.ok()\">" + this.options.ok + "</button>";
+        alertBox.getElementsByClassName("footer")[0].innerHTML = "<button class=\"btn btn-primary\" onclick=\"window.customAlert.ok()\">" + this.options.ok + "</button>";
         document.getElementsByTagName("html")[0].style.overflow = "hidden";
         document.getElementById("customAlert-overlay").style.display = "block";
         alertBox.style.display = "block";
@@ -117,7 +117,7 @@ function customConfirm(options) {
         confirmBox = document.getElementById("customConfirm");
         confirmBox.getElementsByClassName("header")[0].innerHTML = this.options.title;
         confirmBox.getElementsByClassName("body")[0].innerHTML = dialog;
-        confirmBox.getElementsByClassName("footer")[0].innerHTML = "<button class=\"confirm\" onclick=\"window.customConfirm.ok()\">" + (this.options.yes) + "</button><button class=\"cancel\" onclick=\"window.customConfirm.cancel()\">" + (this.options.no) + "</button>";
+        confirmBox.getElementsByClassName("footer")[0].innerHTML = "<button class=\"btn btn-success confirm\" onclick=\"window.customConfirm.ok()\">" + (this.options.yes) + "</button><button class=\"btn btn-danger cancel\" onclick=\"window.customConfirm.cancel()\">" + (this.options.no) + "</button>";
         document.getElementsByTagName("html")[0].style.overflow = "hidden";
         document.getElementById("customConfirm-overlay").style.display = "block";
         confirmBox.style.display = "block";
