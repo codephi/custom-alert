@@ -80,6 +80,13 @@ function customAlert(options) {
 }
 
 function customConfirm(options) {
+    var confirmIt, cancelIt;
+
+    confirmIt = new Event('confirmIt');
+    cancelIt = new Event('cancelIt');
+
+    window.dispatchEvent(confirmIt);
+    window.dispatchEvent(cancelIt);
 
     this.defaultOptions = {
         'yes': 'YES',
@@ -155,6 +162,22 @@ function customConfirm(options) {
         this.options = this.defaultOptions;
     }
 }
+
+window.addEventListener('keydown', function (e) {
+    var keynum;
+
+    keynum = e.keyCode ? e.keyCode : e.which;
+
+    if (keynum == 13) {
+        if (document.getElementById("customConfirm").style.display == "block")
+            window.customConfirm.ok();
+        else if (document.getElementById("customAlert").style.display == "block")
+            window.customAlert.ok();
+    }
+    else if (keynum == 27 && document.getElementById("customConfirm").style.display == "block")
+        window.customConfirm.cancel();
+
+}, false);
 
 /*
  * window.customAlert e window.customConfirm devem permanecer com esses nomes, a não se que vc saiba o que esta fazendo.
