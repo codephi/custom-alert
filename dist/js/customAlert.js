@@ -54,9 +54,16 @@ function customAlert(options) {
         customKit.createDiv("class", "footer", "customAlert");
 
         //Os nomes podem ser alterados, window.alert e window.Alert, ao seu gosto!
-        window.alert = window.Alert = function (dialog, options) {
+        window.alert = window.Alert = function (dialog, options, callback) {
+            if (typeof options == 'function')
+                options = {'callback': options};
+            else if(options && typeof options.callback == 'function')
+                options.callback = callback;
+
+
             if (options)
                 window.customAlert.options = customKit.mergeObjects(window.customAlert.options, options);
+
             window.customAlert.render(dialog);
         };
     }
@@ -72,6 +79,10 @@ function customAlert(options) {
     };
 
     this.ok = function () {
+        if(typeof this.options.callback == 'function')
+            if(this.options.callback() === false)
+                return;
+
         document.getElementById("customAlert").style.display = "none";
         document.getElementById("customAlert-overlay").style.display = "none";
         document.getElementsByTagName("html")[0].style.overflow = "auto";
@@ -132,6 +143,7 @@ function customConfirm(options) {
 
     this.ok = function () {
         this.end();
+
         if (this.options.return) {
             this.clear();
             this.callback(true);
@@ -144,11 +156,13 @@ function customConfirm(options) {
 
     this.cancel = function () {
         this.end();
+
         if (this.options.return) {
             this.clear();
             this.callback(false);
             return;
         }
+
         this.clear();
     }
 
