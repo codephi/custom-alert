@@ -1,143 +1,114 @@
-/**
- * customAlert
- * Author: Philippe Assis
- * Doc and repo: https://github.com/PhilippeAssis/custom-alert
- *
- * Alert e confirm personalizados.
- * FF, Chromer, IE(>=9)
- *
- *                              ATENÇÂO
- * window.customAlert e window.customConfirm devem permanecer com esses nomes,
- * a não ser que você saiba o que esta fazendo.
- */
-
 #customAlert-overlay {
-    display: none;
-    opacity: 0.5;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 100vw;
-    height: 100vh;
-    z-index: 10;
-    background: #000;
+  display: none;
+  opacity: 0.5;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  background: #000;
 }
-
 #customConfirm-overlay {
-    display: none;
-    opacity: 0.5;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 100vw;
-    height: 100vh;
-    z-index: 10;
-    background: #000;
+  display: none;
+  opacity: 0.5;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  background: #000;
 }
-
 #customAlert {
-    background-color: #fff;
+  background-color: #fff;
 }
-
 #customAlert button {
-    background-color: #bababa;
-    color: #5e5e5e;
+  background-color: #bababa;
+  color: #5e5e5e;
 }
-
 #customAlert button:hover {
-    background-color: #666;
-    color: #e6e6e6;
+  background-color: #666;
+  color: #e6e6e6;
 }
-
 #customConfirm {
-    background-color: #fff;
+  background-color: #fff;
 }
-
 #customConfirm button.confirm {
-    margin-right: 10px;
-    background-color: #68bb74;
-    color: #204625;
+  margin-right: 10px;
+  background-color: #68bb74;
+  color: #204625;
 }
-
 #customConfirm button.confirm:hover {
-    background-color: #3f8d4b;
-    color: #dcefdf;
+  background-color: #3f8d4b;
+  color: #dcefdf;
 }
-
 #customConfirm button.cancel {
-    background-color: #e2614b;
-    color: #f8d8d3;
+  background-color: #e2614b;
+  color: #f8d8d3;
 }
-
 #customConfirm button.cancel:hover {
-    background-color: #b0321c;
-    color: #f8d8d3;
+  background-color: #b0321c;
+  color: #f8d8d3;
 }
-
 #customAlert,
 #customConfirm {
-    font-family: arial, helvetica;
-    border-radius: 5px;
-    width: 550px;
-    font-size: 20px;
-    display: none;
-    position: fixed;
-    max-width: 100vw;
-    max-height: 100vh;
-    z-index: 1000;
-    top: 5%;
-    left: 50%;
-    padding: 10px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
-    -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
-    margin-left: -275px;
+  font-family: arial, helvetica;
+  border-radius: 5px;
+  width: 550px;
+  font-size: 20px;
+  display: none;
+  position: fixed;
+  max-width: 100vw;
+  max-height: 100vh;
+  z-index: 1000;
+  top: 5%;
+  left: 50%;
+  padding: 10px;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.3);
+  -webkit-box-shadow: 0 0 10px 0 rgba(0,0,0,0.3);
+  margin-left: -275px;
 }
-
 @media (min-width: 321px) {
-    #customAlert,
-    #customConfirm {
-        top: 25%;
-    }
+  #customAlert,
+  #customConfirm {
+    top: 25%;
+  }
 }
-
 @media (max-width: 550px) {
-    #customAlert,
-    #customConfirm {
-        margin-left: -50vw;
-    }
+  #customAlert,
+  #customConfirm {
+    margin-left: -50vw;
+  }
 }
-
 #customAlert .header,
 #customConfirm .header {
-    background: #fff;
-    color: #232323;
-    text-align: center;
-    font-size: 0.75em;
+  background: #fff;
+  color: #232323;
+  text-align: center;
+  font-size: 0.75em;
 }
-
 #customAlert .body,
 #customConfirm .body {
-    padding: 10px;
-    color: #232323;
-    font-size: 1.2em;
-    background: #fff;
-    text-align: center;
+  padding: 10px;
+  color: #232323;
+  font-size: 1.2em;
+  background: #fff;
+  text-align: center;
 }
-
 #customAlert .footer,
 #customConfirm .footer {
-    background: #fff;
-    text-align: center;
+  background: #fff;
+  text-align: center;
 }
-
-#customAlert button,
-#customConfirm button {
-    width: 100px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    padding: 5px;
-    font-size: 0.9em;
-    word-wrap: break-word;
-    font-family: arial, helvetica;
-    border: none;
+#customAlert .footer button,
+#customConfirm .footer button {
+  width: 100px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 5px;
+  font-size: 0.9em;
+  word-wrap: break-word;
+  font-family: arial, helvetica;
+  border: none;
 }
