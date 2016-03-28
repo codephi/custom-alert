@@ -122,7 +122,22 @@ function customConfirm(options) {
         window.confirm = window.Confirm = function (dialog, callback, options) {
             if (options)
                 window.customConfirm.options = customKit.mergeObjects(window.customConfirm.options, options);
-            window.customConfirm.render(dialog, callback);
+
+            if(typeof callback == "object") {
+                if(!options)
+                    options = {}
+
+                if(callback.confirm)
+                    options.confirm = callback.confirm;
+
+                if(callback.cancel)
+                    options.cancel = callback.cancel;
+
+                window.customConfirm.render(dialog, false, options);
+            }
+            else {
+                window.customConfirm.render(dialog, callback);
+            }
         };
     }
 
@@ -150,12 +165,15 @@ function customConfirm(options) {
 
         if (this.options.return) {
             this.clear();
-            this.callback(true);
+            if(typeof this.callback == 'function')
+                this.callback(true);
             return;
         }
 
         this.clear();
-        this.callback();
+
+        if(typeof this.callback == 'function')
+            this.callback();
     }
 
     this.cancel = function () {
@@ -167,7 +185,8 @@ function customConfirm(options) {
 
         if (this.options.return) {
             this.clear();
-            this.callback(false);
+            if(typeof this.callback == 'function')
+                this.callback(false);
             return;
         }
 
