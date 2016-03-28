@@ -76,6 +76,8 @@ function customAlert(options) {
         document.getElementsByTagName("html")[0].style.overflow = "hidden";
         document.getElementById("customAlert-overlay").style.display = "block";
         alertBox.style.display = "block";
+
+        alertBox.dispatchEvent(new Event('rendered'))
     };
 
     this.ok = function () {
@@ -156,6 +158,8 @@ function customConfirm(options) {
         document.getElementsByTagName("html")[0].style.overflow = "hidden";
         document.getElementById("customConfirm-overlay").style.display = "block";
         confirmBox.style.display = "block";
+
+        confirmBox.dispatchEvent(new Event('rendered'))
     };
 
     this.ok = function () {
