@@ -57,7 +57,7 @@ function customAlert(options) {
         window.alert = window.Alert = function (dialog, options, callback) {
             if (typeof options == 'function')
                 options = {'callback': options};
-            else if(options && typeof options.callback == 'function')
+            else if (options && typeof options.callback == 'function')
                 options.callback = callback;
 
 
@@ -79,8 +79,8 @@ function customAlert(options) {
     };
 
     this.ok = function () {
-        if(typeof this.options.callback == 'function')
-            if(this.options.callback() === false)
+        if (typeof this.options.callback == 'function')
+            if (this.options.callback() === false)
                 return;
 
         document.getElementById("customAlert").style.display = "none";
@@ -123,21 +123,23 @@ function customConfirm(options) {
             if (options)
                 window.customConfirm.options = customKit.mergeObjects(window.customConfirm.options, options);
 
-            if(typeof callback == "object") {
-                if(!options)
+            if (typeof callback == "object") {
+                if (!options)
                     options = {}
 
-                if(callback.confirm)
+                if (callback.confirm)
                     options.confirm = callback.confirm;
 
-                if(callback.cancel)
+                if (callback.cancel)
                     options.cancel = callback.cancel;
 
-                window.customConfirm.render(dialog, false, options);
+                callback = null;
+
+                window.customConfirm.options = customKit.mergeObjects(window.customConfirm.options, options);
             }
-            else {
-                window.customConfirm.render(dialog, callback);
-            }
+
+            window.customConfirm.render(dialog, callback);
+
         };
     }
 
@@ -157,35 +159,36 @@ function customConfirm(options) {
     };
 
     this.ok = function () {
-        if(typeof this.options.confirm == "function")
-            if(!this.options.confirm())
+        console.log(this.options)
+        if (typeof this.options.confirm == "function")
+            if (!this.options.confirm())
                 return;
 
         this.end();
 
         if (this.options.return) {
             this.clear();
-            if(typeof this.callback == 'function')
+            if (typeof this.callback == 'function')
                 this.callback(true);
             return;
         }
 
         this.clear();
 
-        if(typeof this.callback == 'function')
+        if (typeof this.callback == 'function')
             this.callback();
     }
 
     this.cancel = function () {
-        if(typeof this.options.cancel == "function")
-            if(!this.options.cancel())
+        if (typeof this.options.cancel == "function")
+            if (!this.options.cancel())
                 return;
 
         this.end();
 
         if (this.options.return) {
             this.clear();
-            if(typeof this.callback == 'function')
+            if (typeof this.callback == 'function')
                 this.callback(false);
             return;
         }
