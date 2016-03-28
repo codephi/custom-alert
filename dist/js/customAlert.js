@@ -54,9 +54,16 @@ function customAlert(options) {
         customKit.createDiv("class", "footer", "customAlert");
 
         //Os nomes podem ser alterados, window.alert e window.Alert, ao seu gosto!
-        window.alert = window.Alert = function (dialog, options) {
+        window.alert = window.Alert = function (dialog, options, callback) {
+            if (typeof options == 'function')
+                options = {'callback': options};
+            else if(options && typeof options.callback == 'function')
+                options.callback = callback;
+
+
             if (options)
                 window.customAlert.options = customKit.mergeObjects(window.customAlert.options, options);
+
             window.customAlert.render(dialog);
         };
     }
@@ -72,6 +79,10 @@ function customAlert(options) {
     };
 
     this.ok = function () {
+        if(typeof this.options.callback == 'function')
+            if(this.options.callback() === false)
+                return;
+
         document.getElementById("customAlert").style.display = "none";
         document.getElementById("customAlert-overlay").style.display = "none";
         document.getElementsByTagName("html")[0].style.overflow = "auto";
@@ -80,6 +91,13 @@ function customAlert(options) {
 }
 
 function customConfirm(options) {
+    var confirmIt, cancelIt;
+
+    confirmIt = new Event('confirmIt');
+    cancelIt = new Event('cancelIt');
+
+    window.dispatchEvent(confirmIt);
+    window.dispatchEvent(cancelIt);
 
     this.defaultOptions = {
         'yes': 'YES',
@@ -124,7 +142,12 @@ function customConfirm(options) {
     };
 
     this.ok = function () {
+        if(typeof this.options.confirm == "function")
+            if(!this.options.confirm())
+                return;
+
         this.end();
+
         if (this.options.return) {
             this.clear();
             this.callback(true);
@@ -136,12 +159,18 @@ function customConfirm(options) {
     }
 
     this.cancel = function () {
+        if(typeof this.options.cancel == "function")
+            if(!this.options.cancel())
+                return;
+
         this.end();
+
         if (this.options.return) {
             this.clear();
             this.callback(false);
             return;
         }
+
         this.clear();
     }
 
@@ -155,6 +184,22 @@ function customConfirm(options) {
         this.options = this.defaultOptions;
     }
 }
+
+window.addEventListener('keydown', function (e) {
+    var keynum;
+
+    keynum = e.keyCode ? e.keyCode : e.which;
+
+    if (keynum == 13) {
+        if (document.getElementById("customConfirm").style.display == "block")
+            window.customConfirm.ok();
+        else if (document.getElementById("customAlert").style.display == "block")
+            window.customAlert.ok();
+    }
+    else if (keynum == 27 && document.getElementById("customConfirm").style.display == "block")
+        window.customConfirm.cancel();
+
+}, false);
 
 /*
  * window.customAlert e window.customConfirm devem permanecer com esses nomes, a não se que vc saiba o que esta fazendo.
