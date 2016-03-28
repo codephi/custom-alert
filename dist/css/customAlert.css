@@ -23,31 +23,31 @@
 #customAlert {
   background-color: #fff;
 }
-#customAlert button {
+#customAlert .footer button {
   background-color: #bababa;
   color: #5e5e5e;
 }
-#customAlert button:hover {
+#customAlert .footer button:hover {
   background-color: #666;
   color: #e6e6e6;
 }
 #customConfirm {
   background-color: #fff;
 }
-#customConfirm button.confirm {
+#customConfirm .footer button.confirm {
   margin-right: 10px;
   background-color: #68bb74;
   color: #204625;
 }
-#customConfirm button.confirm:hover {
+#customConfirm .footer button.confirm:hover {
   background-color: #3f8d4b;
   color: #dcefdf;
 }
-#customConfirm button.cancel {
+#customConfirm .footer button.cancel {
   background-color: #e2614b;
   color: #f8d8d3;
 }
-#customConfirm button.cancel:hover {
+#customConfirm .footer button.cancel:hover {
   background-color: #b0321c;
   color: #f8d8d3;
 }
