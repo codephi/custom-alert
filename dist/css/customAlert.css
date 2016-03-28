@@ -37,7 +37,7 @@
 #customConfirm .footer button.confirm {
   margin-right: 10px;
   background-color: #68bb74;
-  color: #204625;
+  color: #edf7ef;
 }
 #customConfirm .footer button.confirm:hover {
   background-color: #3f8d4b;
@@ -45,7 +45,7 @@
 }
 #customConfirm .footer button.cancel {
   background-color: #e2614b;
-  color: #f8d8d3;
+  color: #fbece9;
 }
 #customConfirm .footer button.cancel:hover {
   background-color: #b0321c;
