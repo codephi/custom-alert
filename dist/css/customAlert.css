@@ -23,31 +23,31 @@
 #customAlert {
   background-color: #fff;
 }
-#customAlert .footer button {
+#customAlert .customalert_footer button {
   background-color: #bababa;
   color: #5e5e5e;
 }
-#customAlert .footer button:hover {
+#customAlert .customalert_footer button:hover {
   background-color: #666;
   color: #e6e6e6;
 }
 #customConfirm {
   background-color: #fff;
 }
-#customConfirm .footer button.confirm {
+#customConfirm .customalert_footer button.customalert_confirm {
   margin-right: 10px;
   background-color: #68bb74;
   color: #edf7ef;
 }
-#customConfirm .footer button.confirm:hover {
+#customConfirm .customalert_footer button.customalert_confirm:hover {
   background-color: #3f8d4b;
   color: #dcefdf;
 }
-#customConfirm .footer button.cancel {
+#customConfirm .customalert_footer button.customalert_cancel {
   background-color: #e2614b;
   color: #fbece9;
 }
-#customConfirm .footer button.cancel:hover {
+#customConfirm .customalert_footer button.customalert_cancel:hover {
   background-color: #b0321c;
   color: #f8d8d3;
 }
@@ -81,28 +81,28 @@
     margin-left: -50vw;
   }
 }
-#customAlert .header,
-#customConfirm .header {
+#customAlert .customalert_header,
+#customConfirm .customalert_header {
   background: #fff;
   color: #232323;
   text-align: center;
   font-size: 0.75em;
 }
-#customAlert .body,
-#customConfirm .body {
+#customAlert .customalert_body,
+#customConfirm .customalert_body {
   padding: 10px;
   color: #232323;
   font-size: 1.2em;
   background: #fff;
   text-align: center;
 }
-#customAlert .footer,
-#customConfirm .footer {
+#customAlert .customalert_footer,
+#customConfirm .customalert_footer {
   background: #fff;
   text-align: center;
 }
-#customAlert .footer button,
-#customConfirm .footer button {
+#customAlert .customalert_footer button,
+#customConfirm .customalert_footer button {
   width: 100px;
   margin-top: 5px;
   margin-bottom: 5px;

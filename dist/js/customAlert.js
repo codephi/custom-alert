@@ -49,9 +49,9 @@ function customAlert(options) {
     if (document.getElementById("customAlert") == null) {
         customKit.createDiv("id", "customAlert-overlay");
         customKit.createDiv("id", "customAlert");
-        customKit.createDiv("class", "header", "customAlert");
-        customKit.createDiv("class", "body", "customAlert");
-        customKit.createDiv("class", "footer", "customAlert");
+        customKit.createDiv("class", "customalert_header", "customAlert");
+        customKit.createDiv("class", "customalert_body", "customAlert");
+        customKit.createDiv("class", "customalert_footer", "customAlert");
 
         //Os nomes podem ser alterados, window.alert e window.Alert, ao seu gosto!
         window.alert = window.Alert = function (dialog, options, callback) {
@@ -70,9 +70,9 @@ function customAlert(options) {
 
     this.render = function (dialog) {
         alertBox = document.getElementById("customAlert");
-        alertBox.getElementsByClassName("header")[0].innerHTML = this.options.title;
-        alertBox.getElementsByClassName("body")[0].innerHTML = dialog;
-        alertBox.getElementsByClassName("footer")[0].innerHTML = "<button class=\"btn btn-primary\" onclick=\"window.customAlert.ok()\">" + this.options.ok + "</button>";
+        alertBox.getElementsByClassName("customalert_header")[0].innerHTML = this.options.title;
+        alertBox.getElementsByClassName("customalert_body")[0].innerHTML = dialog;
+        alertBox.getElementsByClassName("customalert_footer")[0].innerHTML = "<button class=\"btn btn-primary\" onclick=\"window.customAlert.ok()\">" + this.options.ok + "</button>";
         document.getElementsByTagName("html")[0].style.overflow = "hidden";
         document.getElementById("customAlert-overlay").style.display = "block";
         alertBox.style.display = "block";
@@ -116,9 +116,9 @@ function customConfirm(options) {
     if (document.getElementById("customConfirm") == null) {
         customKit.createDiv("id", "customConfirm-overlay");
         customKit.createDiv("id", "customConfirm");
-        customKit.createDiv("class", "header", "customConfirm");
-        customKit.createDiv("class", "body", "customConfirm");
-        customKit.createDiv("class", "footer", "customConfirm");
+        customKit.createDiv("class", "customalert_header", "customConfirm");
+        customKit.createDiv("class", "customalert_body", "customConfirm");
+        customKit.createDiv("class", "customalert_footer", "customConfirm");
 
         //Os nomes podem ser alterados, window.confirm e window.Confirm, ao seu gosto!
         window.confirm = window.Confirm = function (dialog, callback, options) {
@@ -152,9 +152,9 @@ function customConfirm(options) {
     this.render = function (dialog, callback) {
         this.callback = callback;
         confirmBox = document.getElementById("customConfirm");
-        confirmBox.getElementsByClassName("header")[0].innerHTML = this.options.title;
-        confirmBox.getElementsByClassName("body")[0].innerHTML = dialog;
-        confirmBox.getElementsByClassName("footer")[0].innerHTML = "<button class=\"btn btn-success confirm\" onclick=\"window.customConfirm.ok()\">" + (this.options.yes) + "</button><button class=\"btn btn-danger cancel\" onclick=\"window.customConfirm.cancel()\">" + (this.options.no) + "</button>";
+        confirmBox.getElementsByClassName("customalert_header")[0].innerHTML = this.options.title;
+        confirmBox.getElementsByClassName("customalert_body")[0].innerHTML = dialog;
+        confirmBox.getElementsByClassName("customalert_footer")[0].innerHTML = "<button class=\"btn btn-success customalert_confirm\" onclick=\"window.customConfirm.ok()\">" + (this.options.yes) + "</button><button class=\"btn btn-danger customalert_cancel\" onclick=\"window.customConfirm.cancel()\">" + (this.options.no) + "</button>";
         document.getElementsByTagName("html")[0].style.overflow = "hidden";
         document.getElementById("customConfirm-overlay").style.display = "block";
         confirmBox.style.display = "block";

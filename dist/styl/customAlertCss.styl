@@ -12,22 +12,22 @@
 
 #customAlert
   background-color background
-  .footer
+  .customalert_footer
     button
       buttonsColors(colorButton, backgroundButton)
 
 #customConfirm
   background-color backgroundConfirm
-  .footer
+  .customalert_footer
     button
-      &.confirm
+      &.customalert_confirm
         margin-right 10px
         buttonsColors(colorButtonTrue, backgroundButtonTrue)
-      &.cancel
+      &.customalert_cancel
         buttonsColors(colorButtonFalse, backgroundButtonFalse)
 
 #customAlert, #customConfirm
   baseAlert()
-  .footer
+  .customalert_footer
     button
       buttonStyle()
