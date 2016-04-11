@@ -4,7 +4,7 @@
   "authors": [
     "Philippe Assis <assis@philippeassis.com>"
   ],
-  "description": "Function alert () and confirm () customizable. Replace the functions alert () and confirm () JavaScript function, allowing customizes them. This application does     not use jQuery or another framework, only JavaScript and CSS. It works perfect mind in mobile devices, adapting automatically to the screen size.",
+  "description": "Function alert () and confirm () customizable. Replace the functions alert () and confirm () JavaScript function, allowing customizes.",
   "main": "",
   "keywords": [
     "alert",
