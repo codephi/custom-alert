@@ -15,14 +15,12 @@ elixir.extend("minifycss", function(path, savePath) {
                 "maxLineLen": 80,
                 "uglyComments": true
             }))
-            .pipe(rename(function(path) {
-                path.basename += ".min";
-            }))
             .pipe(gulp.dest(savePath));
     })
 });
 
 elixir(function(mix) {
-    mix.stylus("./dist/styl/custom-alert.styl", "./dist/css/");
-    mix.minifycss("./dist/css/custom-alert.css", "./dist/css/");
+    mix.stylus("./dist/styl/custom-alert.styl", "./dist/css/custom-alert.css");
+    // mix.copy("./dist/css/custom-alert.css", "./dist/css/custom-alert.min.css")
+    // mix.minifycss("./dist/css/custom-alert.min.css", "./dist/css/");
 });
