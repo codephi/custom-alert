@@ -144,7 +144,6 @@ function customConfirm(options) {
     }
 
     this.callback = function (data) {
-        if (data != undefined) console.log(data)
     };
 
     this.render = function (dialog, callback) {
@@ -159,7 +158,6 @@ function customConfirm(options) {
     };
 
     this.ok = function () {
-        console.log(this.options)
         if (typeof this.options.confirm == "function")
             if (!this.options.confirm())
                 return;
