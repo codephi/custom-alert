@@ -1,30 +1,27 @@
-#customAlert-overlay
-  baseOverlay(backgroundOverlay)
+#customAlert-overlay, #customConfirm-overlay
+  baseOverlay($backgroundOverlay)
 
-#customConfirm-overlay
-  baseOverlay(backgroundConfirmOverlay)
-
-#customAlert
-  background-color background
-  .customalert_footer
-    button
-      buttonsColors(colorButton, backgroundButton)
-
-#customConfirm
-  background-color backgroundConfirm
-  .customalert_footer
-    button
-      &.customalert_confirm
-        margin-right 10px
-        if disable-bootstrap
-          buttonsColors(colorButtonTrue, backgroundButtonTrue)
-      if disable-bootstrap
-        &.customalert_cancel
-          buttonsColors(colorButtonFalse, backgroundButtonFalse)
-
-#customAlert, #customConfirm
-  baseAlert()
-  if disable-bootstrap
+.customalert
+  background-color $background
+  baseAlert(fontFamily, $borderRadius, $fontSize, $width, $backgroundHeader, $backgroundBody, $backgroundFooter)
+  if $disable-bootstrap
     .customalert_footer
       button
         buttonStyle()
+
+  if $disable-bootstrap
+    &.customalert_alert
+        .customalert_footer
+          button
+            $buttonsColors($alertColorButton, $alertBackgroundButton)
+
+  &.customalert_confirm
+    .customalert_footer
+      button
+        &.customalert_confirm
+          margin-right 10px
+          if $disable-bootstrap
+            buttonsColors($confirmColorButtonTrue, $confirmBackgroundButtonTrue)
+        if $disable-bootstrap
+          &.customalert_cancel
+            buttonsColors($confirmColorButtonFalse, $confirmBackgroundButtonFalse)

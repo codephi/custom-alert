@@ -1,14 +1,14 @@
 //Shadow function
-boxShadow(x, y, blur, spread, color)
-  box-shadow: x y blur spread color
-  -webkit-box-shadow: x y blur spread color
+boxShadow($x, $y, $blur, $spread, $color)
+  box-shadow: $x $y $blur $spread $color
+  -webkit-box-shadow: $x $y $blur $spread $color
 
 //Default alert
-baseAlert()
-  font-family fontFamily
-  border-radius borderRadius
-  width width
-  font-size fontSize
+baseAlert(fontFamily, $borderRadius, $fontSize, $width, $backgroundHeader, $backgroundBody, $backgroundFooter)
+  font-family $fontFamily
+  border-radius $borderRadius
+  width $width
+  font-size $fontSize
   display none
   position fixed
   max-width 100vw
@@ -20,11 +20,11 @@ baseAlert()
   left 50%
   padding 10px
   boxShadow(0, 0, 10px, 0, rgba(0, 0, 0, 0.3))
-  marginLeft(width)
-  baseContent(backgroundHeader, backgroundBody, backgroundFooter)
+  marginLeft($width)
+  baseContent($backgroundHeader, $backgroundBody, $backgroundFooter)
 
 //Default Overlay
-baseOverlay(backg)
+baseOverlay($backg)
   display none
   opacity 0.5
   position fixed
@@ -33,12 +33,12 @@ baseOverlay(backg)
   width 100vw
   height 100vh
   z-index 10
-  background backg
+  background $backg
 
 //Default Content "header,body,footer'
-baseContent(header, body, footer)
+baseContent($header, $body, $footer)
   .customalert_header
-    background header
+    background $header
     color #232323
     text-align center
     font-size 0.75em
@@ -46,10 +46,10 @@ baseContent(header, body, footer)
     padding 10px
     color #232323
     font-size 1.2em
-    background body
+    background $body
     text-align center
   .customalert_footer
-    background footer
+    background $footer
     text-align center
 
 buttonStyle()
@@ -58,20 +58,20 @@ buttonStyle()
   margin-bottom 5px
   padding 5px
   word-wrap break-word
-  font-family fontFamily
+  font-family $fontFamily
   border none
 
-marginLeft(wd)
-  margin-left (wd / 2) * -1;
-  @media (max-width: wd)
+marginLeft($wd)
+  margin-left ($wd / 2) * -1;
+  @media (max-width: $wd)
     margin-left (100vw / 2) * -1;
 
-hoverButton(color)
+hoverButton($color)
   &:hover
-    background-color lightness(color, 40%)
-    color lightness(color, 90%)
+    background-color lightness($color, 40%)
+    color lightness($color, 90%)
 
-buttonsColors(color, bgcolor)
-  background-color bgcolor
-  color color
-  hoverButton(color)
+buttonsColors($color, $bgcolor)
+  background-color $bgcolor
+  color $color
+  hoverButton($color)

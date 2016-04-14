@@ -11,9 +11,13 @@
  * a não ser que você saiba o que esta fazendo.
  */
 var customKit = {
-    createDiv: function (attr, name, parent) {
+    createDiv: function (attr, parent) {
         var div = document.createElement("div");
-        div.setAttribute(attr, name);
+
+        for(var key in attr){
+            div.setAttribute(key, attr[key]);
+        }
+
         if (parent) {
             var parent = document.getElementById(parent)
             parent.appendChild(div);
@@ -47,11 +51,23 @@ function customAlert(options) {
     this.options = this.defaultOptions;
 
     if (document.getElementById("customAlert") == null) {
-        customKit.createDiv("id", "customAlert-overlay");
-        customKit.createDiv("id", "customAlert");
-        customKit.createDiv("class", "customalert_header", "customAlert");
-        customKit.createDiv("class", "customalert_body", "customAlert");
-        customKit.createDiv("class", "customalert_footer", "customAlert");
+        customKit.createDiv({
+            "id": "customAlert-overlay",
+            "class": 'customalert_overlay'
+        });
+        customKit.createDiv({
+            "id": "customAlert",
+            "class": 'customalert customalert_alert'
+        });
+        customKit.createDiv({
+            "class": "customalert_header",
+        }, "customAlert");
+        customKit.createDiv({
+            "class": "customalert_body"
+        }, "customAlert");
+        customKit.createDiv({
+            "class": "customalert_footer"
+        }, "customAlert");
 
         //Os nomes podem ser alterados, window.alert e window.Alert, ao seu gosto!
         window.alert = window.Alert = function (dialog, options, callback) {
@@ -114,11 +130,23 @@ function customConfirm(options) {
     this.options = this.defaultOptions;
 
     if (document.getElementById("customConfirm") == null) {
-        customKit.createDiv("id", "customConfirm-overlay");
-        customKit.createDiv("id", "customConfirm");
-        customKit.createDiv("class", "customalert_header", "customConfirm");
-        customKit.createDiv("class", "customalert_body", "customConfirm");
-        customKit.createDiv("class", "customalert_footer", "customConfirm");
+        customKit.createDiv({
+            "id": "customConfirm-overlay",
+            "class": 'customalert_overlay'
+        });
+        customKit.createDiv({
+            "id": "customConfirm",
+            "class": 'customalert customalert_confirm'
+        });
+        customKit.createDiv({
+            "class": "customalert_header",
+        }, "customConfirm");
+        customKit.createDiv({
+            "class": "customalert_body"
+        }, "customConfirm");
+        customKit.createDiv({
+            "class": "customalert_footer"
+        }, "customConfirm");
 
         //Os nomes podem ser alterados, window.confirm e window.Confirm, ao seu gosto!
         window.confirm = window.Confirm = function (dialog, callback, options) {
