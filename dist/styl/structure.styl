@@ -1,0 +1,30 @@
+#customAlert-overlay
+  baseOverlay(backgroundOverlay)
+
+#customConfirm-overlay
+  baseOverlay(backgroundConfirmOverlay)
+
+#customAlert
+  background-color background
+  .customalert_footer
+    button
+      buttonsColors(colorButton, backgroundButton)
+
+#customConfirm
+  background-color backgroundConfirm
+  .customalert_footer
+    button
+      &.customalert_confirm
+        margin-right 10px
+        if disable-bootstrap
+          buttonsColors(colorButtonTrue, backgroundButtonTrue)
+      if disable-bootstrap
+        &.customalert_cancel
+          buttonsColors(colorButtonFalse, backgroundButtonFalse)
+
+#customAlert, #customConfirm
+  baseAlert()
+  if disable-bootstrap
+    .customalert_footer
+      button
+        buttonStyle()

@@ -1,0 +1,24 @@
+{
+  "name": "custom-alert",
+  "homepage": "https://github.com/PhilippeAssis/custom-alert",
+  "authors": [
+    "Philippe Assis <assis@philippeassis.com>"
+  ],
+  "description": "Function alert () and confirm () customizable. Replace the functions alert () and confirm () JavaScript function, allowing customizes.",
+  "main": "",
+  "keywords": [
+    "alert",
+    "confirm",
+    "javascript",
+    "custom",
+    "personal"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
