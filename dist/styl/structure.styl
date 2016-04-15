@@ -3,7 +3,7 @@
 
 .customalert
   background-color $background
-  baseAlert(fontFamily, $borderRadius, $fontSize, $width, $backgroundHeader, $backgroundBody, $backgroundFooter)
+  baseAlert($fontFamily, $borderRadius, $fontSize, $width, $backgroundHeader, $backgroundBody, $backgroundFooter)
   if $disable-bootstrap
     .customalert_footer
       button
@@ -18,10 +18,10 @@
   &.customalert_confirm
     .customalert_footer
       button
-        &.customalert_confirm
+        &.customalert_button_confirm
           margin-right 10px
           if $disable-bootstrap
             buttonsColors($confirmColorButtonTrue, $confirmBackgroundButtonTrue)
         if $disable-bootstrap
-          &.customalert_cancel
+          &.customalert_button_cancel
             buttonsColors($confirmColorButtonFalse, $confirmBackgroundButtonFalse)
