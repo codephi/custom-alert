@@ -5,10 +5,12 @@ boxShadow($x, $y, $blur, $spread, $color)
 
 //Default alert
 baseAlert(fontFamily, $borderRadius, $fontSize, $width, $backgroundHeader, $backgroundBody, $backgroundFooter)
-  font-family $fontFamily
+  if $disable-bootstrap
+    font-family $fontFamily
   border-radius $borderRadius
   width $width
-  font-size $fontSize
+  if $disable-bootstrap
+    font-size $fontSize
   display none
   position fixed
   max-width 100vw
