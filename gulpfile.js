@@ -20,7 +20,7 @@ elixir.extend("minifycss", function(path, savePath) {
 });
 
 elixir(function(mix) {
-    mix.stylus("./dist/styl/custom-alert.styl", "./dist/css/custom-alert.css");
+    mix.stylus("./dist/styl/index.styl", "./dist/css/custom-alert.css");
     mix.copy("./dist/css/custom-alert.css", "./dist/css/custom-alert.min.css")
     mix.minifycss("./dist/css/custom-alert.min.css", "./dist/css/");
 });

@@ -1,4 +1,5 @@
 .idea
 .gitignore
 node_modules
+bower_components
 .tag*
