@@ -59,7 +59,7 @@ function customAlert(inGlobalVar) {
     function Alert(options) {
         this.defaultOptions = {
             'button': 'OK',
-            'title': 'Alert!'
+            'title': 'Alert'
         };
 
         if (options) {
@@ -95,7 +95,7 @@ function customAlert(inGlobalVar) {
                 "done": "OK",
                 "cancel": "cancel"
             },
-            'title': 'Confirm it:'
+            'title': 'Confirm'
         };
 
         if (options) {
