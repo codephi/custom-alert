@@ -1,6 +1,6 @@
 {
   "name": "custom-alert",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Override the alert () and confirm () functions of JavaScript, allowing you to customize them. This application does not use jQuery or another framework, just JavaScript and CSS. Responsive design.",
   "main": "gulpfile.js",
   "scripts": {
