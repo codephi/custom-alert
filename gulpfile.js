@@ -57,7 +57,7 @@ gulp.task('default', function() {
         }))
         .pipe(gulp.dest('./dist/js'))
 
-    gulp.src('./src/styl/custom-alert.styl')
+    gulp.src(['./src/styl/custom-alert.styl','./src/styl/custom-alert-bootstrap.styl'])
         .pipe(stylus({
             compress: true
         }))

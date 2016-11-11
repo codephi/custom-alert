@@ -15,7 +15,22 @@ npm install --save custom-alert
 bower install --save custom-alert
 ```
 
+#### Apply
 
+Default style
+```html
+<link rel="stylesheet" href="YOU/PATH/dist/css/custom-alert.css">
+```
+
+Default bootstrap style
+```html
+<link rel="stylesheet" href="YOU/PATH/dist/css/custom-alert-bootstrap.css"> 
+```
+
+and script
+```html
+<script src="YOU/PATH/dist/js/custom-alert.min.js">
+```
 
 ## Use
 
