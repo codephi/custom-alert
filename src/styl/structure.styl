@@ -1,4 +1,4 @@
-#customAlert-overlay, #customConfirm-overlay
+#customalert-overlay, #customconfirm-overlay
   display none
   opacity 0.5
   position fixed
@@ -33,18 +33,18 @@
   @media (max-width: $width)
     margin-left (100vw / 2) * -1;
 
-  .customalert_header, .customalert_body, .customalert_footer
+  .header, .body, .footer
     text-align center
     background $background
-  .customalert_header
+  .header
     font-size 0.75em
 
-  .customalert_body
+  .body
     padding 10px
     font-size 1.2em
 
   if $bootstrap == false
-    .customalert_footer
+    .footer
       button
         margin-top 5px
         margin-bottom 5px
@@ -55,15 +55,15 @@
         border none
 
   if $bootstrap == false
-    &.customalert_alert
-        .customalert_footer
-          button
+    &.customalert-alert
+        .footer
+          .button-done
             $buttonsColors($alertColorButton, $alertBackgroundButton)
 
-  &.customalert_confirm
-    .customalert_footer
+  &.customalert-confirm
+    .footer
       button
-        &.customalert_button_confirm
+        &.button-done
           margin-right 10px
 
           if $bootstrap == false
@@ -75,7 +75,7 @@
               color lightness($confirmColorButtonTrue, 90%)
 
         if $bootstrap == false
-          &.customalert_button_cancel
+          &.button-cancel
             background-color $confirmBackgroundButtonFalse
             color $confirmColorButtonFalse
 

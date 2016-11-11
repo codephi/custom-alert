@@ -1,26 +1,65 @@
-var gulp = require('gulp')
-var shell = require('gulp-shell')
-var elixir = require('laravel-elixir');
-var uglifycss = require('gulp-uglifycss');
-var rename = require("gulp-rename");
+var gulp = require('gulp');
+var stylus = require('gulp-stylus');
+var pug = require('gulp-pug');
+var clean = require('gulp-clean');
+var minify = require('gulp-minify');
+var plumber = require('gulp-plumber');
+var autowatch = require('gulp-autowatch');
 
-var Task = elixir.Task;
+gulp.task('views', function buildHTML() {
+    gulp.src('./*.html')
+        .pipe(plumber())
+        .pipe(clean())
 
-require('laravel-elixir-stylus');
+    gulp.src('./demo/assets/views/*.pug')
+        .pipe(plumber())
+        .pipe(pug())
+        .pipe(gulp.dest('./'))
+})
 
-elixir.extend("minifycss", function(path, savePath) {
-    new Task("minifycss", function() {
-        gulp.src(path)
-            .pipe(uglifycss({
-                "maxLineLen": 80,
-                "uglyComments": true
-            }))
-            .pipe(gulp.dest(savePath));
-    })
+gulp.task('stylus', function buildHTML() {
+    gulp.src('./demo/assets/styl/*.styl')
+        .pipe(plumber())
+        .pipe(stylus({
+            compress: true
+        }))
+        .pipe(gulp.dest('./demo/public/css'))
+})
+
+gulp.task('js', function buildHTML() {
+    gulp.src('./demo/assets/js/*.js')
+        .pipe(plumber())
+        .pipe(minify())
+        .pipe(gulp.dest('./demo/public/js'))
+})
+
+
+gulp.task('watch', function() {
+    autowatch(gulp, {
+        'stylus': './demo/assets/**/*.styl',
+        'js': './demo/assets/**/*.js',
+        'views': './demo/assets/**/*.pug',
+        'default': ['./src/js/*.js', './src/styl/*.styl']
+    });
 });
 
-elixir(function(mix) {
-    mix.stylus("./dist/styl/index.styl", "./dist/css/custom-alert.css");
-    mix.copy("./dist/css/custom-alert.css", "./dist/css/custom-alert.min.css")
-    mix.minifycss("./dist/css/custom-alert.min.css", "./dist/css/");
-});
+gulp.task('live', ['default', 'stylus', 'js', 'views', 'watch']);
+
+gulp.task('default', function() {
+    gulp.src('./src/js/custom-alert.js')
+        .pipe(minify({
+            ext: {
+                src: '-debug.js',
+                min: '.min.js'
+            },
+            exclude: ['tasks'],
+            ignoreFiles: ['.combo.js', '-min.js']
+        }))
+        .pipe(gulp.dest('./dist/js'))
+
+    gulp.src('./src/styl/custom-alert.styl')
+        .pipe(stylus({
+            compress: true
+        }))
+        .pipe(gulp.dest('./dist/css'))
+})

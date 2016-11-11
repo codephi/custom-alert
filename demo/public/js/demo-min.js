@@ -1,0 +1,1 @@
+function demo1(){alert("Hello!",{title:"Demo Alert",button:"Go!"},function(){confirm("Ok?",function(o){o?alert("Good, good!"):confirm("No?",function(o){o?alert("Good!"):alert("Cry... :/")},{buttons:{done:"No, no... Good!",cancel:"No."}})},{title:"Demo Confirm",buttons:{done:":)",cancel:":("}})})}new customAlert,demo1(),document.querySelector("code").innerHTML=demo1.toString();
