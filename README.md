@@ -15,7 +15,7 @@ npm install --save custom-alert
 bower install --save custom-alert
 ```
 
-#### Apply
+### Apply
 
 Default style
 ```html
