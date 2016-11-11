@@ -1,5 +1,5 @@
 #custom-alert.js
-![custom-alert.js](https://raw.githubusercontent.com/PhilippeAssis/custom-alert/master/customAlert.jpg)
+![custom-alert.js](https://raw.githubusercontent.com/PhilippeAssis/custom-alert/master/customAlert2.jpg)
 
 Override the alert () and confirm () functions of JavaScript, allowing you to customize them. This application does not use jQuery or another framework, just JavaScript and CSS. Responsive design.
 
