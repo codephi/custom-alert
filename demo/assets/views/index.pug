@@ -4,11 +4,14 @@ html
     meta(charset='utf-8')
     title custom-alert.js :: Demo
     link(rel="stylesheet", href="dist/css/custom-alert.css")
+    link(href="https://fonts.googleapis.com/css?family=Roboto|Ubuntu" rel="stylesheet")
+    link(rel="stylesheet", href="demo/public/css/demo.css")
   body
-    h1 custom-alert.js
-    pre
-      code
-    a(href="#", onclick="demo1()") Click to demo.
-    script(src="dist/js/custom-alert.min.js")
+    .demo
+      h1 custom-alert.js
+      a(href="#", onclick="demo1()") Click to demo
+      pre
+        code
+    script(src="dist/js/custom-alert-debug.js")
     script(src="demo/public/js/demo.js")
         

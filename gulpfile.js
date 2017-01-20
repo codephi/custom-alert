@@ -6,7 +6,7 @@ var minify = require('gulp-minify');
 var plumber = require('gulp-plumber');
 var autowatch = require('gulp-autowatch');
 
-gulp.task('views', function buildHTML() {
+gulp.task('views', function() {
     gulp.src('./*.html')
         .pipe(plumber())
         .pipe(clean())
@@ -17,7 +17,7 @@ gulp.task('views', function buildHTML() {
         .pipe(gulp.dest('./'))
 })
 
-gulp.task('stylus', function buildHTML() {
+gulp.task('stylus', function() {
     gulp.src('./demo/assets/styl/*.styl')
         .pipe(plumber())
         .pipe(stylus({
@@ -26,7 +26,7 @@ gulp.task('stylus', function buildHTML() {
         .pipe(gulp.dest('./demo/public/css'))
 })
 
-gulp.task('js', function buildHTML() {
+gulp.task('js', function() {
     gulp.src('./demo/assets/js/*.js')
         .pipe(plumber())
         .pipe(minify())

@@ -1,7 +1,7 @@
 #custom-alert.js
 ![custom-alert.js](https://raw.githubusercontent.com/PhilippeAssis/custom-alert/master/customAlert2.jpg)
 
-Override the alert () and confirm () functions of JavaScript, allowing you to customize them. This application does not use jQuery or another framework, just JavaScript and CSS. Responsive design.
+Override the alert() and confirm() functions of JavaScript, allowing you to customize them. This application does not use jQuery or another framework, just JavaScript and CSS. Responsive design.
 
 ## Demo
 [demo page](https://philippeassis.github.io/custom-alert)
@@ -31,7 +31,7 @@ Default bootstrap style
 
 and script
 ```html
-<script src="YOU/PATH/dist/js/custom-alert.min.js">
+<!--<script src="YOU/PATH/dist/js/custom-alert.min.js">-->
 ```
 
 ## Use
@@ -99,9 +99,12 @@ Setting Title and Text of Buttons.
         //..
     }, { 
         "title" : "Wellcome",
-        "buttons": {
-            "done" : ":)",
-            "cancel" : ":("
+        "done": {
+                "text": ":)",
+        },
+        "cancel": {
+            "text" : ":(",
+            "default": true
         }
     })
 ```
@@ -115,13 +118,30 @@ Setting Title and Text of Buttons.
 
 #### Confirm
 ##### options
- - **title:**  The title.
- - **buttons.done:**  The done text.
- - **buttons.cancel:**  The cancel text.
+ - **title.text**  The title.
+ - **title.default**  If true, set the default as default.
+ - **title.bold**  Add bold text.
+ - **done.text**  The done text.
+ - **done.default**  If true, set the default as default.
+ - **done.bold**  Add bold text.
+ - **cancel:**  The cancel text.
 
 ##### callback
- - **buttons.success:**  if button done press.
- - **buttons.cancel:**  if button calcel press.
+ - **success:**  if button done press.
+ - **cancel:**  if button calcel press.
  - **only function:**  Gets an attribute with true or false.
+
+## Keyboard events
+The ENTER key performs the default button.
+
+```javascript
+{
+    "cancel": {
+        "default" : true
+    }
+}
+```
+In this example, the default button will be "Cancel", so by clicking ENTER on the keyboard, this button will be executed.
+**By default the "default button" is done.**
 
 I see an example on the [demo page](https://philippeassis.github.io/custom-alert)

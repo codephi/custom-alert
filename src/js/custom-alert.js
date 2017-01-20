@@ -15,17 +15,6 @@
 
 function customAlert(inGlobalVar) {
 
-    var mergeObjects = function(obj1, obj2) {
-        var obj3 = {};
-        for (var attrname in obj1) {
-            obj3[attrname] = obj1[attrname];
-        }
-        for (var attrname in obj2) {
-            obj3[attrname] = obj2[attrname];
-        }
-        return obj3;
-    }
-
     var createDom = function(type) {
         this.el = document.createElement(type);
 
@@ -41,7 +30,6 @@ function customAlert(inGlobalVar) {
 
         this.parent = function(parent, wrap) {
             wrap = (wrap) ? document.querySelector(wrap) : document;
-            console.log(this.el)
             parent = wrap.querySelector(parent)
             parent.appendChild(this.el);
             return this;
@@ -56,23 +44,32 @@ function customAlert(inGlobalVar) {
         return this;
     }
 
-    function Alert(options) {
-        this.defaultOptions = {
+    function mergeObjects(obj1, obj2) {
+        for (var key in obj2) {
+            obj1[key] = obj2[key];
+        }
+
+        return obj1;
+    }
+
+    function Alert() {
+        var AlertDefaultOptions = {
             'button': 'OK',
             'title': 'Alert'
         };
 
-        if (options) {
-            this.defaultOptions = mergeObjects(this.defaultOptions, options);
-        }
-
-        this.options = this.defaultOptions;
-
         this.render = function(dialog, options) {
+            if (options) {
+                this.options = mergeObjects(AlertDefaultOptions, options);
+            }
+            else {
+                this.options = AlertDefaultOptions;
+            }
+
             var alertBox = document.querySelector("#customalert");
-            alertBox.querySelector(".header").innerHTML = options.title;
+            alertBox.querySelector(".header").innerHTML = this.options.title;
             alertBox.querySelector(".body").innerHTML = dialog;
-            alertBox.querySelector(".button-done").innerHTML = options.button;
+            alertBox.querySelector(".button-done").innerHTML = this.options.button;
             document.querySelector("html").style.overflow = "hidden";
             document.querySelector("#customalert-overlay").style.display = "block";
             alertBox.style.display = "block";
@@ -89,29 +86,71 @@ function customAlert(inGlobalVar) {
         }
     }
 
-    function Confirm(options) {
-        this.defaultOptions = {
-            "buttons": {
-                "done": "OK",
-                "cancel": "cancel"
+    function Confirm() {
+        var confirmDefaultOptions = {
+            "done": {
+                "text": "Ok",
+                "bold": false,
+                "default": true
+            },
+            "cancel": {
+                "text": "Cancel",
+                "bold": false,
+                "default": false
             },
             'title': 'Confirm'
         };
 
-        if (options) {
-            this.defaultOptions = mergeObjects(this.defaultOptions, options);
-        }
+        var getText = function(options, obj) {
+            if (options[obj].bold) {
+                return "<strong>" + options[obj].text + "</strong>"
+            }
 
-        this.options = this.defaultOptions;
+            return options[obj].text
+        }
 
         this.callback = function(data) {};
 
         this.render = function(dialog, options) {
+            this.options = confirmDefaultOptions;
+
+            if (options) {
+                if (options.done && typeof options.done == "string") {
+                    options.done = {
+                        "text": options.done
+                    }
+                }
+
+                if (options.cancel && typeof options.cancel == "string") {
+                    options.cancel = {
+                        "text": options.cancel
+                    }
+                }
+
+                if (options.cancel.default == true) {
+                    options.done.default = false;
+                }
+                else {
+                    options.done.default = true;
+                }
+
+                console.log(confirmDefaultOptions)
+                if (options.cancel) {
+                    this.options.cancel = mergeObjects(confirmDefaultOptions.cancel, options.cancel)
+                }
+                if (options.done) {
+                    this.options.done = mergeObjects(confirmDefaultOptions.done, options.done)
+                }
+                if (options.title) {
+                    this.options.title = confirmDefaultOptions.title
+                }
+            }
+
             var confirmBox = document.querySelector("#customconfirm");
             confirmBox.querySelector(".header").innerHTML = this.options.title;
             confirmBox.querySelector(".body").innerHTML = dialog;
-            confirmBox.querySelector(".button-done").innerHTML = options.buttons.done;
-            confirmBox.querySelector(".button-cancel").innerHTML = options.buttons.cancel;
+            confirmBox.querySelector(".button-cancel").innerHTML = getText(this.options, "cancel");
+            confirmBox.querySelector(".button-done").innerHTML = getText(this.options, "done");
             document.querySelector("html").style.overflow = "hidden";
             document.querySelector("#customconfirm-overlay").style.display = "block";
             confirmBox.style.display = "block";
@@ -144,11 +183,6 @@ function customAlert(inGlobalVar) {
         }
     }
 
-
-    window.customalert = new Alert();
-
-    window.customconfirm = new Confirm();
-    
     var cAlert, cConfirm;
 
     if (document.getElementById("customalert") == null) {
@@ -181,31 +215,38 @@ function customAlert(inGlobalVar) {
 
 
         window.addEventListener('keydown', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
             var keynum;
 
             keynum = e.keyCode ? e.keyCode : e.which;
 
             if (keynum == 13) {
-                if (document.getElementById("customconfirm").style.display == "block")
-                    window.customconfirm.done();
-                else if (document.getElementById("customalert").style.display == "block")
+                if (document.getElementById("customconfirm").style.display == "block") {
+                    if (window.customconfirm.options.cancel.default) {
+                        window.customconfirm.cancel();
+                    }
+                    else {
+                        window.customconfirm.done();
+                    }
+                }
+                else if (document.getElementById("customalert").style.display == "block") {
                     window.customalert.done();
+                }
             }
             else if (keynum == 27 && document.getElementById("customconfirm").style.display == "block")
                 window.customconfirm.cancel();
 
         }, false);
 
-
-
         cAlert = window.Alert = function(dialog, options, callback) {
+            window.customalert = new Alert();
             if (typeof options == 'function') {
                 window.customalert.callback = options;
-                options = window.customalert.options;
+                options = null
             }
             else {
                 window.customalert.callback = callback || null;
-                options = mergeObjects(window.customalert.options, options);
             }
 
             window.customalert.render(dialog, options);
@@ -236,20 +277,18 @@ function customAlert(inGlobalVar) {
         }).parent("#customconfirm")
 
         createDom('button').attr({
-            "class": "btn btn-success custom-alert button-done",
-            "onclick": "window.customconfirm.done()"
-        }).parent(".footer", "#customconfirm")
-
-        createDom('button').attr({
             "class": "btn btn-danger button-cancel",
             "onclick": "window.customconfirm.cancel()"
         }).parent(".footer", "#customconfirm")
 
-        cConfirm = window.Confirm = function(dialog, callback, options) {
-            if (!options) {
-                options = window.customconfirm.options;
-            }
+        createDom('button').attr({
+            "class": "btn btn-success custom-alert button-done",
+            "onclick": "window.customconfirm.done()"
+        }).parent(".footer", "#customconfirm")
 
+
+        cConfirm = window.Confirm = function(dialog, callback, options) {
+            window.customconfirm = new Confirm();
             if (typeof callback == 'object') {
                 window.customconfirm.callbackSuccess = callback.success;
                 window.customconfirm.callbackCancel = callback.cancel;
@@ -262,15 +301,15 @@ function customAlert(inGlobalVar) {
         };
 
     }
-    
-    
-    if(inGlobalVar === false){
+
+
+    if (inGlobalVar === false) {
         return {
-            "alert" : cAlert,
-            "confirm" : cConfirm
+            "alert": cAlert,
+            "confirm": cConfirm
         }
     }
-    else{
+    else {
         window.alert = cAlert
         window.confirm = cConfirm
     }

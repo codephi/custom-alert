@@ -8,6 +8,7 @@ function demo1() {
         confirm("Ok?", function(done) {
             if (!done) {
                 confirm("No?", function(done) {
+                    console.log('NO!')
                     if (!done) {
                         alert("Cry... :/")
                     }
@@ -15,10 +16,8 @@ function demo1() {
                         alert("Good!")
                     }
                 }, {
-                    "buttons": {
-                        "done": "No, no... Good!",
-                        "cancel": "No."
-                    }
+                    "done": "No, no... Good!",
+                    "cancel": "No."
                 })
             }
             else {
@@ -27,10 +26,15 @@ function demo1() {
 
         }, {
             "title": "Demo Confirm",
-            "buttons": {
-                "done": ":)",
-                "cancel": ":("
+
+            "done": {
+                "text": ":)",
+            },
+            "cancel": {
+                "text" : ":(",
+                "default": true
             }
+
         })
     })
 }
