@@ -142,8 +142,8 @@ function customAlert(inGlobalVar) {
                     this.options.done = mergeObjects(confirmDefaultOptions.done, options.done)
                 }
                 if (options.title) {
-                    this.options.title = confirmDefaultOptions.title
-                }
+                    this.options.title = options.title
+                } 
             }
 
             var confirmBox = document.querySelector("#customconfirm");
@@ -215,27 +215,35 @@ function customAlert(inGlobalVar) {
 
 
         window.addEventListener('keydown', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            var keynum;
-
-            keynum = e.keyCode ? e.keyCode : e.which;
+        	var customConfirm = document.getElementById("customconfirm");
+        	var customAlert = document.getElementById("customalert");
+        	
+        	if( (customAlert == null && customConfirm == null) 
+        			|| (customConfirm != null && customConfirm.style.display != "block")
+        			|| (customAlert != null && customAlert.style.display != "block") ){
+        		return;
+        	}
+        	
+        	e.preventDefault();
+        	e.stopPropagation();
+        
+            var keynum = e.keyCode ? e.keyCode : e.which;
 
             if (keynum == 13) {
-                if (document.getElementById("customconfirm").style.display == "block") {
+                if (customConfirm.style.display == "block") {
                     if (window.customconfirm.options.cancel.default) {
                         window.customconfirm.cancel();
                     }
                     else {
                         window.customconfirm.done();
                     }
-                }
-                else if (document.getElementById("customalert").style.display == "block") {
+                } else if (customAlert.style.display == "block") {
                     window.customalert.done();
                 }
             }
-            else if (keynum == 27 && document.getElementById("customconfirm").style.display == "block")
+            else if (keynum == 27 && customConfirm.style.display == "block"){
                 window.customconfirm.cancel();
+            }
 
         }, false);
 
